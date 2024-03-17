@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+  name: template-ingress
+  namespace: template
+spec:
+  rules:
+  - host: template.master.luka-j.rocks
+    http:
+      paths:
+      - backend:
+          service:
+            name: template-service
+            port:
+              name: http
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - template.master.luka-j.rocks
+    secretName: template-tls-secret
