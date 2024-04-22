@@ -1,4 +1,4 @@
-name: Publish and deploy RP microservice
+name: Publish and deploy microservice
 
 on:
   push:
